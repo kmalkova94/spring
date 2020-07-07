@@ -1,0 +1,51 @@
+CREATE DATABASE bookshop;
+
+CREATE TABLE storage (
+    id INTEGER NOT NULL PRIMARY KEY,
+    placeid varchar(20) NOT NULL,
+    address varchar (500) NOT NULL
+);
+
+CREATE TABLE publisherDto (
+    id INTEGER NOT NULL PRIMARY KEY,
+    name varchar(100) NOT NULL,
+    address varchar(500) NOT NULL,
+    phonenumber varchar(20) NOT NULL
+);
+
+CREATE TABLE authorDto (
+    id INTEGER NOT NULL PRIMARY KEY,
+    name varchar(100) NOT NULL
+);
+
+CREATE TABLE book (
+    id INTEGER NOT NULL PRIMARY KEY,
+    title varchar(100) NOT NULL,
+    authorDto INTEGER NOT NULL,
+    publisherDto INTEGER NOT NULL,
+    genre varchar(50) NOT NULL,
+    storage varchar(500) NOT NULL,
+    FOREIGN KEY (authorDto) REFERENCES authorDto (id),
+    FOREIGN KEY (publisherDto) REFERENCES publisherDto (id)
+);
+
+CREATE TABLE customerDto (
+    id INTEGER NOT NULL PRIMARY KEY,
+    login varchar(100) NOT NULL,
+    password varchar (100) NOT NULL,
+    name varchar(200) NOT NULL,
+    deliveryaddress varchar(500) NOT NULL,
+    bonuses INTEGER NOT NULL,
+    phonenumber varchar(50),
+    status varchar (50)
+);
+
+CREATE TABLE bookorder (
+    id INTEGER NOT NULL PRIMARY KEY,
+    positions INTEGER NOT NULL,
+    items INTEGER[] NOT NULL,
+    customerDto INTEGER NOT NULL,
+    creationdate TIMESTAMP WITH TIME ZONE NOT NULL,
+    deliverydate TIMESTAMP WITH TIME ZONE NOT NULL,
+    FOREIGN KEY (customerDto) REFERENCES customerDto (id) ON DELETE CASCADE
+);
