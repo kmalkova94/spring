@@ -3,7 +3,6 @@ package org.example.bookshop.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.example.bookshop.enums.Genre;
-import org.example.bookshop.impl.Address;
 
 @Data
 public class BookDto {
@@ -12,11 +11,9 @@ public class BookDto {
     @JsonProperty("booktitle")
     private String title;
     @JsonProperty("author")
-    private AuthorDto authorDto;
+    private Long authorId;
     @JsonProperty("publisher")
-    private PublisherDto publisherDto;
+    private Long publisherId;
     @JsonProperty("bookgenre")
     private Genre genre;
-    @JsonProperty("storage")
-    private Address storage;
 }

@@ -1,16 +1,18 @@
 package org.example.bookshop.entity;
 
-import org.example.bookshop.impl.Address;
-import org.example.bookshop.impl.Name;
+import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "publisher")
+@Data
 public class Publisher {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Name name;
-    private Address address;
+    private String name;
+    private String address;
     private String phoneNumber;
 }

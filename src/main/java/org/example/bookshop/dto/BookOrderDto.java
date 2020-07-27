@@ -2,9 +2,10 @@ package org.example.bookshop.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.example.bookshop.entity.Book;
 import org.joda.time.DateTime;
 
-import java.util.List;
+import java.util.Set;
 
 @Data
 public class BookOrderDto {
@@ -13,9 +14,9 @@ public class BookOrderDto {
     @JsonProperty("numOfPositions")
     private Long positions;
     @JsonProperty("items")
-    private List<BookDto> items;
+    private Set<Book> items;
     @JsonProperty("customer")
-    private CustomerDto customerDto;
+    private Long customerId;
     @JsonProperty("creationDate")
     private DateTime creationDate;
     @JsonProperty("deliveryDate")

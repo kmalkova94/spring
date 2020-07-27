@@ -7,6 +7,7 @@ import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -16,8 +17,8 @@ public class BookOrder{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long positions;
-    @OneToMany
-    private List<Book> items;
+    @OneToMany(mappedBy = "bookOrders")
+    private Set<Book> items;
     @ManyToOne
     private Customer customer;
     private DateTime creationDate;
